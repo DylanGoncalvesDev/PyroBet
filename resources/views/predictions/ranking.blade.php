@@ -8,13 +8,12 @@
 
         <div class="w-full bg-slate-950 border border-emerald-400 rounded-xl overflow-hidden shadow-sm">
             <div class="overflow-x-auto">
-                <table class="w-full text-left">
+                <table class="w-full">
                     <thead>
                         <tr class="border-b border-emerald-400 bg-gradient-to-bl from-lime-300 to-emerald-400 text-[10px] uppercase font-extrabold text-white tracking-widest">
-                            <th class="py-3 px-5 w-16 text-center">Puesto</th>
+                            <th class="py-3 px-5">Puesto</th>
                             <th class="py-3 px-4">Usuario / Jugador</th>
-                            <th class="py-3 px-4">Correo Electrónico</th>
-                            <th class="py-3 px-5 text-right w-36">Puntos Totales</th>
+                            <th class="py-3 px-5">Puntos Totales</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-emerald-400 text-xs text-white font-medium">
@@ -37,17 +36,15 @@
                                     @endif
                                 </td>
 
-                                <td class="py-3.5 px-4 font-bold text-white flex items-center gap-2">
+                                <td class="py-3.5 px-4 font-bold text-white flex justify-center items-center gap-2">
                                     <span class="uppercase tracking-wide">{{ $user->name }}</span>
                                     @if(auth()->id() === $user->id)
                                         <span class="text-[9px] font-black font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-900/40 px-1.5 py-0.5 rounded uppercase">Tú</span>
                                     @endif
                                 </td>
 
-                                <td class="py-3.5 px-4 font-mono text-white">{{ $user->email }}</td>
-
-                                <td class="py-3.5 px-5 text-right font-mono font-black text-sm text-emerald-400">
-                                    {{ $user->total_points ?? 0 }} <span class="text-[9px] font-bold text-white uppercase ml-0.5 font-sans">PTS</span>
+                                <td class="font-mono font-black text-center text-sm text-emerald-400">
+                                    {{ $user->total_points ?? 0 }} <span class="text-[9px] font-bold text-white uppercase font-sans">PTS</span>
                                 </td>
 
                             </tr>
