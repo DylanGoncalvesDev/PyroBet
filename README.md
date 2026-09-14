@@ -56,7 +56,7 @@ Sigue estos pasos para levantar el entorno de desarrollo en tu computadora de fo
 1. **Clonar el repositorio de GitHub:**
    ```bash
    git clone https://github.com/DylanGoncalvesDev/PyroBet-App.git
-   cd PyroBet-App
+   cd PyroBet
    ```
 
 2. **Instalar las dependencias de PHP (Composer):**
@@ -71,7 +71,11 @@ Sigue estos pasos para levantar el entorno de desarrollo en tu computadora de fo
 
 4. **Configurar el Entorno:**
    Crea una copia de tu archivo de variables de entorno:
-   ```bash
+    ```bash
+   # Si usas Windows (CMD clásico):
+   copy .env.example .env
+
+   # Si usas Linux, Mac o Git Bash:
    cp .env.example .env
    ```
    Genera la llave secreta de seguridad e encriptación obligatoria para evitar el error `MissingAppKeyException`:
@@ -80,15 +84,22 @@ Sigue estos pasos para levantar el entorno de desarrollo en tu computadora de fo
    ```
    Abre el archivo `.env` y edita la tercera línea para asignar el nombre corporativo oficial:
    ```env
-   APP_NAME="PyroBet App"
+   APP_NAME="PyroBet"
    ```
 
 5. **Preparar la Base de Datos:**
-   Crea el archivo vacío para SQLite y ejecuta las migraciones junto con los seeders de fábrica:
+   Antes de migrar, es estrictamente obligatorio crear el archivo físico de la base de datos SQLite en tu computadora. Ejecuta el comando nativo de tu sistema operativo:
+   ```bash
+   # Opción para Windows (CMD clásico):
+   copy nul database\database.sqlite
+
+   # Opción para Linux, Mac o Git Bash:
+   touch database/database.sqlite
+   ```
+   Una vez creado el archivo físico en el disco duro, ejecuta las migraciones junto con los seeders de fábrica para estructurar las tablas y rellenar los datos de prueba:
    ```bash
    php artisan migrate --seed
    ```
-
 6. **Compilar Gráficos y Encender Servidor:**
    Abre una terminal y mantén encendido el compilador en caliente de Tailwind:
    ```bash
@@ -99,7 +110,6 @@ Sigue estos pasos para levantar el entorno de desarrollo en tu computadora de fo
    php artisan serve
    ```
    Accede desde tu navegador a: `http://127.0.0.1:8000`
-
 ---
 
 ## 💻 Comandos Útiles de Desarrollo y CI/CD
