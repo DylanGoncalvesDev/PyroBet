@@ -51,7 +51,21 @@ PyroBet cuenta con un algoritmo matemático automatizado que se gatilla inmediat
 
 ## 📦 Requisitos de Instalación (Entorno Local)
 
-Sigue estos pasos para levantar el entorno de desarrollo en tu computadora de forma limpia:
+### 🛠️ Prerrequisitos Obligatorios (Antes de empezar)
+
+Para garantizar el correcto funcionamiento del software y evitar errores de comandos no reconocidos en la terminal, es estrictamente obligatorio tener instaladas de forma global las siguientes herramientas en tu sistema operativo:
+
+*   **PHP 8.4 (Thread Safe):** El motor moderno requerido por el núcleo de Laravel 11. Recuerda activar las extensiones obligatorias `pdo_sqlite`, `fileinfo`, `mbstring`, `curl` y `openssl` en tu archivo de configuración `php.ini`.
+
+*   **Composer:** El gestor de paquetes oficial de PHP necesario para resolver y descargar el backend (requerido para ejecutar `composer install`). Puedes descargarlo desde [getcomposer.org](https://getcomposer.org).
+
+*   **Node.js & NPM (Versión LTS):** El entorno de ejecución y gestor de dependencias gráfico requerido para compilar el frontend dinámico de Tailwind CSS y los componentes interactivos de Flux (requerido para ejecutar `npm install` y `npm run dev`). Puedes descargarlo desde [nodejs.org](https://nodejs.org).
+
+*   **Git:** El sistema de control de versiones estándar de la industria para poder clonar la estructura de carpetas desde la nube de forma limpia.
+
+> 💡 **Nota de oro para Windows:** Al instalar PHP, Composer y Node.js, es fundamental marcar la casilla **"Add to PATH"** en sus respectivos asistentes. Si acabas de instalarlos y la terminal clásica (CMD) no los reconoce, **cierra y vuelve a abrir tu editor (Visual Studio Code) o tu consola** para que Windows actualice la memoria y cargue las nuevas variables de entorno de tu computadora.
+
+### Sigue estos pasos para levantar el entorno de desarrollo en tu computadora de forma limpia:
 
 1. **Clonar el repositorio de GitHub:**
    ```bash
@@ -100,6 +114,15 @@ Sigue estos pasos para levantar el entorno de desarrollo en tu computadora de fo
    ```bash
    php artisan migrate --seed
    ```
+   > 🚨 **Nota de Resolución de Problemas:** Si al ejecutar este comando la terminal te arroja un error fatal relacionado con el controlador de la base de datos (*"Driver not found"*), significa que tu motor de PHP tiene apagadas las extensiones de SQLite. 
+   > 
+   > Para solucionarlo, abre tu archivo **`php.ini`** (ubicado en tu carpeta raíz de PHP), busca las siguientes líneas y asegúrate de **eliminar el punto y coma (`;`)** que traen al inicio de su renglón para activarlas:
+   > ```ini
+   > extension=pdo_sqlite
+   > extension=sqlite3
+   > ```
+   > Una vez guardado el archivo `php.ini`, cierra tu consola, abre una nueva y vuelve a ejecutar el comando de migración.
+   
 6. **Compilar Gráficos y Encender Servidor:**
    Abre una terminal y mantén encendido el compilador en caliente de Tailwind:
    ```bash
